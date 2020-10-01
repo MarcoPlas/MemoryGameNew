@@ -1,0 +1,10 @@
+C:\Users\Dell\Documents\Memory-project\Memory project\obj\Debug\Memory project.csprojAssemblyReference.cache
+C:\Users\Dell\Documents\Memory-project\Memory project\obj\Debug\Endscreen.g.cs
+C:\Users\Dell\Documents\Memory-project\Memory project\obj\Debug\Gamescreen.g.cs
+C:\Users\Dell\Documents\Memory-project\Memory project\obj\Debug\Highscores.g.cs
+C:\Users\Dell\Documents\Memory-project\Memory project\obj\Debug\MainWindow.g.cs
+C:\Users\Dell\Documents\Memory-project\Memory project\obj\Debug\StartGame.g.cs
+C:\Users\Dell\Documents\Memory-project\Memory project\obj\Debug\App.g.cs
+C:\Users\Dell\Documents\Memory-project\Memory project\obj\Debug\Memory project_Content.g.cs
+C:\Users\Dell\Documents\Memory-project\Memory project\obj\Debug\Memory project_MarkupCompile.cache
+C:\Users\Dell\Documents\Memory-project\Memory project\obj\Debug\Memory project_MarkupCompile.lref
