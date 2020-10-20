@@ -28,6 +28,6 @@
 
         <Button Content="Start Spel" FontSize="40" Grid.Column="1" Grid.Row="3" Margin="10"/>
         <Button Content="Highscores" FontSize="40" Grid.Column="1" Grid.Row="2" Margin="10"/>
-        <Label Content="Harry Potter Memory" FontSize="60" Grid.ColumnSpan="3" HorizontalAlignment="Center"/>
+        <Label Content="Harry Potter Memory" FontSize="60" Grid.ColumnSpan="3" HorizontalAlignment="Center" Foreground="White"/>
     </Grid>
 </Page>
