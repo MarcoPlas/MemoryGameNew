@@ -20,14 +20,16 @@ namespace Memory_project
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+
 		public MainWindow()
 		{
 			InitializeComponent();
+			this.Content = new Homescherm();
 		}
 
-        private void TextBox_TextChanged()
+        public static implicit operator MainWindow(Highscores v)
         {
-
+            throw new NotImplementedException();
         }
     }
 }

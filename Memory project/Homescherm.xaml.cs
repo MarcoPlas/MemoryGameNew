@@ -24,5 +24,15 @@ namespace Memory_project
         {
             InitializeComponent();
         }
+        public void Start_Game_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Hoi");
+
+        }
+        public void Highscores_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new Highscores();
+            main.Show();
+        }
     }
 }

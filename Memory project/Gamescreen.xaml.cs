@@ -27,7 +27,6 @@ namespace Memory_project
         {
             InitializeComponent();
             AddImages();
-            MyButton.FontSize = 22;
             Grid.SetColumn(MyButton, 7);
         }
 
