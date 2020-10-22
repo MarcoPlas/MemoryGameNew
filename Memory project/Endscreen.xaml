@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Memory_project"
       mc:Ignorable="d" 
       d:DesignHeight="450"
-      Title="Endscreen" Width="919.355">
+      Title="Endscreen" >
 	<Page.Background>
             <ImageBrush ImageSource="Images/Harry Potter Background.jpg" Opacity="0.6"/>
         </Page.Background>
@@ -40,9 +40,8 @@
                 <TextBox Margin="0" Grid.Column="1" Grid.Row="2" FontSize="25" Background="White" TextAlignment="Center" BorderThickness="2" BorderBrush="Black">insert score</TextBox>
                 <TextBox Margin="0" Grid.Column="0" Grid.Row="2" FontSize="25" Background="White" TextAlignment="Center" BorderThickness="2" BorderBrush="Black">naam 2</TextBox>
             </Grid>
-        <Button Margin="60" Grid.Column="0" Grid.Row="3">Opnieuw</Button>
-		<Button Margin="60" Grid.Column="3" Grid.Row="3"> Homescreen</Button>
-        <TextBox Margin=" 50" Grid.Column="1" FontSize="30"  Background="Transparent" BorderThickness="0">Spel afgelopen</TextBox>
-
-	</Grid>
+        <Button Margin="60" Grid.Column="0" Click="Back_Start_Game" Grid.Row="3">Opnieuw</Button>
+		<Button Margin="60" Grid.Column="3" Click="Back_Home_Screen" Grid.Row="3"> Homescreen</Button>
+        <TextBox Margin=" 50" Grid.Column="1" FontSize="30"  Background="Transparent" Foreground="White" BorderThickness="0">Spel afgelopen</TextBox>
+    </Grid>
 </Page>

@@ -24,5 +24,15 @@ namespace Memory_project
 		{
 			InitializeComponent();
 		}
+		public void Back_Home_Screen(object sender, RoutedEventArgs e)
+		{
+			Homescherm homescherm = new Homescherm();
+			this.NavigationService.Navigate(homescherm);
+		}
+		public void Back_Start_Game(object sender, RoutedEventArgs e)
+		{
+			Page1 page1 = new Page1();
+			this.NavigationService.Navigate(page1);
+		}
 	}
 }

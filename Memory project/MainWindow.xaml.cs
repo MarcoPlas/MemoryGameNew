@@ -24,12 +24,11 @@ namespace Memory_project
 		public MainWindow()
 		{
 			InitializeComponent();
-			this.Content = new Homescherm();
-		}
 
-        public static implicit operator MainWindow(Highscores v)
-        {
-            throw new NotImplementedException();
+            //Homescherm homescreen = new Homescherm();
+            //myFrame.NavigationService.Navigate(homescreen);
+            Endscreen endscreen = new Endscreen();
+            myFrame.NavigationService.Navigate(endscreen);
         }
-    }
+	}
 }

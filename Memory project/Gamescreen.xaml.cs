@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 
 namespace Memory_project
 {
@@ -28,9 +30,8 @@ namespace Memory_project
             InitializeComponent();
             AddImages();
             Grid.SetColumn(MyButton, 7);
+            MyButton.FontSize = 22;
         }
-
-        int turns = 0;
 
         public void AddImages()
         {
@@ -61,15 +62,9 @@ namespace Memory_project
 
         public void TurnCard(object sender, MouseButtonEventArgs e)
         {
-            turns++;
             Image card = (Image)sender;
             ImageSource front = (ImageSource)card.Tag;
             card.Source = front;
-            if (turns == 2)
-            {
-                MessageBox.Show(Convert.ToString(turns));
-                turns -= 2;
-            }
         }
 
         public List<ImageSource> GetImageList()
@@ -81,17 +76,16 @@ namespace Memory_project
                 int nr = i % 8 + 1;
                 Uri path = new Uri("Images/" + nr + ".png", UriKind.Relative);
                 result.Add(new BitmapImage(path));
-
             }
             return result;
         }
 
 
 
-        public void Button_Click(object sender, RoutedEventArgs e)
+        public void Back_Start_Game(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Hoi");
-
+            Page1 page1 = new Page1();
+            this.NavigationService.Navigate(page1);
         }
     }
 }

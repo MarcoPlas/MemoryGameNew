@@ -26,13 +26,13 @@ namespace Memory_project
         }
         public void Start_Game_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Hoi");
-
+            Page1 page1 = new Page1();
+            this.NavigationService.Navigate(page1);
         }
         public void Highscores_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new Highscores();
-            main.Show();
+            Highscores highscores = new Highscores();
+            this.NavigationService.Navigate(highscores);
         }
     }
 }

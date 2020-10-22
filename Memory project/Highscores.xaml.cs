@@ -24,5 +24,10 @@ namespace Memory_project
 		{
 			InitializeComponent();
 		}
+		public void Back_Home_Screen(object sender, RoutedEventArgs e)
+		{
+			Homescherm homescherm = new Homescherm();
+			this.NavigationService.Navigate(homescherm);
+		}
 	}
 }
