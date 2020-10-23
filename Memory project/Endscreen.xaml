@@ -33,12 +33,12 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-                <TextBox Margin="0" Grid.Column="0" FontSize="35" Background="Gray" TextAlignment="Center" BorderThickness="2" BorderBrush="Black">Spelers</TextBox>
-                <TextBox Margin="0" Grid.Column="1" FontSize="35" Background="Gray" TextAlignment="Center" BorderThickness="2" BorderBrush="Black">Score</TextBox>
-                <TextBox Margin="0" Grid.Column="1" Grid.Row="1" FontSize="25" Background="White" TextAlignment="Center" BorderThickness="2" BorderBrush="Black">insert score</TextBox>
-                <TextBox Margin="0" Grid.Column="0" Grid.Row="1" FontSize="25" Background="White" TextAlignment="Center" BorderThickness="2" BorderBrush="Black">naam 1</TextBox>
-                <TextBox Margin="0" Grid.Column="1" Grid.Row="2" FontSize="25" Background="White" TextAlignment="Center" BorderThickness="2" BorderBrush="Black">insert score</TextBox>
-                <TextBox Margin="0" Grid.Column="0" Grid.Row="2" FontSize="25" Background="White" TextAlignment="Center" BorderThickness="2" BorderBrush="Black">naam 2</TextBox>
+                <Label  Grid.Column="0" FontSize="35" Background="Gray" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="2" BorderBrush="Black">Spelers</Label>
+                <Label  Grid.Column="1" FontSize="35" Background="Gray" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="2" BorderBrush="Black">Score</Label>
+                <Label  Grid.Column="1" Grid.Row="1" FontSize="25" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="2" BorderBrush="Black">insert score</Label>
+                <Label  Grid.Column="0" Grid.Row="1" FontSize="25" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="2" BorderBrush="Black">naam 1</Label>
+                <Label  Grid.Column="1" Grid.Row="2" FontSize="25" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="2" BorderBrush="Black">insert score</Label>
+                <Label  Grid.Column="0" Grid.Row="2" FontSize="25" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="2" BorderBrush="Black">naam 2</Label>
             </Grid>
         <Button Margin="50" Grid.Column="0" Click="Back_Start_Game" Grid.Row="3" FontSize="25" MaxWidth="200" MaxHeight="40">Opnieuw</Button>
         <Button Margin="50" Grid.Column="3" Click="Back_Home_Screen" Grid.Row="3" FontSize="25" MaxWidth="200" MaxHeight="40"> Homescreen</Button>
