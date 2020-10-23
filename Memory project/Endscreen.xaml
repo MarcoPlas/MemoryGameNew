@@ -40,8 +40,11 @@
                 <TextBox Margin="0" Grid.Column="1" Grid.Row="2" FontSize="25" Background="White" TextAlignment="Center" BorderThickness="2" BorderBrush="Black">insert score</TextBox>
                 <TextBox Margin="0" Grid.Column="0" Grid.Row="2" FontSize="25" Background="White" TextAlignment="Center" BorderThickness="2" BorderBrush="Black">naam 2</TextBox>
             </Grid>
-        <Button Margin="60" Grid.Column="0" Click="Back_Start_Game" Grid.Row="3">Opnieuw</Button>
-		<Button Margin="60" Grid.Column="3" Click="Back_Home_Screen" Grid.Row="3"> Homescreen</Button>
-        <TextBox HorizontalAlignment="Center" Grid.Column="0" FontSize="60" Grid.ColumnSpan="3"  Background="Transparent" Foreground="White" BorderThickness="0">Spel afgelopen</TextBox>
+        <Button Margin="50" Grid.Column="0" Click="Back_Start_Game" Grid.Row="3" FontSize="25" MaxWidth="200" MaxHeight="40">Opnieuw</Button>
+        <Button Margin="50" Grid.Column="3" Click="Back_Home_Screen" Grid.Row="3" FontSize="25" MaxWidth="200" MaxHeight="40"> Homescreen</Button>
+
+        <Viewbox HorizontalAlignment="Center" Grid.Column="1" Grid.Row="0">
+            <TextBox  FontSize="60"  Background="Transparent" Foreground="White" BorderThickness="0">Spel afgelopen</TextBox>
+        </Viewbox>
     </Grid>
 </Page>
