@@ -26,8 +26,8 @@ namespace Memory_project
         }
         public void Start_Game_Click(object sender, RoutedEventArgs e)
         {
-            Page1 page1 = new Page1();
-            this.NavigationService.Navigate(page1);
+            StartGame startgame = new StartGame();
+            this.NavigationService.Navigate(startgame);
         }
         public void Highscores_Click(object sender, RoutedEventArgs e)
         {

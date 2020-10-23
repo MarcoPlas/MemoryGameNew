@@ -9,7 +9,7 @@
       Title="Gamescreen">
 
     <Page.Background>
-        <ImageBrush ImageSource="Images/Harry Potter Background.jpg" Opacity="0.8">
+        <ImageBrush ImageSource="Images/Harry Potter Background.jpg" Opacity="1">
         </ImageBrush>
 
     </Page.Background>

@@ -18,9 +18,9 @@ namespace Memory_project
 	/// <summary>
 	/// Interaction logic for Page1.xaml
 	/// </summary>
-	public partial class Page1 : Page
+	public partial class StartGame : Page
 	{
-		public Page1()
+		public StartGame()
 		{
 			InitializeComponent();
 		}
