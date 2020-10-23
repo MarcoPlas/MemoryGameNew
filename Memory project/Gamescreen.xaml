@@ -33,5 +33,6 @@
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
         <Button x:Name="MyButton" Content="Opnieuw" Margin="7" Click="Back_Start_Game"></Button>
+        <Button x:Name="MyButton_1" Content="Naar Endscreen" Margin="7" Click="To_End_Screen"></Button>
     </Grid>
 </Page>

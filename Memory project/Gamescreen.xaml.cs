@@ -31,6 +31,9 @@ namespace Memory_project
             AddImages();
             Grid.SetColumn(MyButton, 7);
             MyButton.FontSize = 22;
+            MyButton_1.FontSize = 22;
+            Grid.SetColumn(MyButton_1, 7);
+            Grid.SetRow(MyButton_1, 1);
         }
 
         public void AddImages()
@@ -86,6 +89,11 @@ namespace Memory_project
         {
             StartGame startgame = new StartGame();
             this.NavigationService.Navigate(startgame);
+        }
+        public void To_End_Screen(object sender, RoutedEventArgs e)
+        {
+            Endscreen endscreen = new Endscreen();
+            this.NavigationService.Navigate(endscreen);
         }
     }
 }
