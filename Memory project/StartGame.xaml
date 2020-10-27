@@ -33,11 +33,11 @@
             <Button Click="Back_Home_Screen">Ga Terug</Button>
         </Viewbox>
         
-        <TextBox Grid.Column="3" Grid.Row="2"></TextBox>
+        <TextBox Grid.Column="3" Grid.Row="2" Name="Inputplayer2"></TextBox>
         <Viewbox Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
             <Label Foreground="White">Speler 2</Label>
         </Viewbox>
-        <TextBox Grid.Column="1" Grid.Row="2"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="2" Name="Inputplayer1"></TextBox>
         <Viewbox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
             <Label Foreground="White">Speler 1</Label>
         </Viewbox>

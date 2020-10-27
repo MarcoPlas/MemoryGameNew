@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace Memory_project
 {
@@ -20,9 +21,20 @@ namespace Memory_project
 	/// </summary>
 	public partial class Endscreen : Page
 	{
-		public Endscreen()
+
+		string playername1;
+		string playername2;
+
+		
+		public Endscreen(string player1, string player2)
 		{
 			InitializeComponent();
+
+			playername1 = player1;
+			playername2 = player2;
+
+			output();
+
 		}
 		public void Back_Home_Screen(object sender, RoutedEventArgs e)
 		{
@@ -34,5 +46,15 @@ namespace Memory_project
 			StartGame startgame = new StartGame();
 			this.NavigationService.Navigate(startgame);
 		}
+
+		private void output()
+        {
+			Winner.Content = (playername1);
+			Loser.Content = (playername2);
+        }
+		
+
+
+
 	}
 }

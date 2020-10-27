@@ -22,18 +22,28 @@ namespace Memory_project
 	/// </summary>
 	public partial class Gamescreen : Page
 	{
+        string player_1;
+        string player_2;
 
         List<int> imageNumber = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8 }; //makes a list of numbers
         Random random = new Random(); //creates a variable called random
 
-        public Gamescreen()
+        public Gamescreen(string player1, string player2)
         {
             InitializeComponent();
+            player_1 = player1;
+            player_2 = player2;
+            
+
+            player01.Content = (player1);
+            player02.Content = (player2);
+
             AddImages();
             Grid.SetColumn(MyButton, 7);
             Grid.SetColumn(MyButton_1, 7);
             Grid.SetRow(MyButton_1, 1);
         }
+
 
         public void AddImages()
         {
@@ -79,7 +89,6 @@ namespace Memory_project
                 {
                     int numberRandom = random.Next(0, imageNumber.Count); //selects a random number between 0 and the amount of numbers still in the list
                     int numberValue = imageNumber[numberRandom]; //converts numberRandom into a usable value
-                    Console.WriteLine(numberValue); //writes the numberValue as a line for testing purposes
                     imageNumber.RemoveAt(numberRandom); //removes the selected number from the list so it can't be selected again
                     Uri path = new Uri("Images/" + numberValue + ".png", UriKind.Relative);
                     result.Add(new BitmapImage(path));
@@ -96,7 +105,7 @@ namespace Memory_project
         }
         public void To_End_Screen(object sender, RoutedEventArgs e)
         {
-            Endscreen endscreen = new Endscreen();
+            Endscreen endscreen = new Endscreen(player_1, player_2);
             this.NavigationService.Navigate(endscreen);
         }
     }

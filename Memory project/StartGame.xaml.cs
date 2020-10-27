@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace Memory_project
 {
 	/// <summary>
@@ -20,6 +21,10 @@ namespace Memory_project
 	/// </summary>
 	public partial class StartGame : Page
 	{
+
+		public string player1;
+		public string player2;
+
 		public StartGame()
 		{
 			InitializeComponent();
@@ -31,8 +36,25 @@ namespace Memory_project
 		}
 		public void To_Game_Screen(object sender, RoutedEventArgs e)
 		{
-			Gamescreen gamescreen = new Gamescreen();
+			Gamescreen gamescreen = new Gamescreen(player1, player2);
+
+			player1 = Inputplayer1.Text;
+			player2 = Inputplayer2.Text;
+
+			if (player1 == "")
+			{
+				player1 = "Player 1";
+			}
+			if (player2 == "")
+			{
+				player2 = "Player 2";
+			}
+			
 			this.NavigationService.Navigate(gamescreen);
+
 		}
+
+
+
 	}
 }

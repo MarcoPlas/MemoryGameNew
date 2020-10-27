@@ -25,10 +25,10 @@ namespace Memory_project
 		{
 			InitializeComponent();
 
-            //Homescherm homescreen = new Homescherm();
-            //myFrame.NavigationService.Navigate(homescreen);
-            Endscreen endscreen = new Endscreen();
-            myFrame.NavigationService.Navigate(endscreen);
+            Homescherm homescreen = new Homescherm();
+            myFrame.NavigationService.Navigate(homescreen);
+            //Endscreen endscreen = new Endscreen();
+            //myFrame.NavigationService.Navigate(endscreen);
         }
 	}
 }
