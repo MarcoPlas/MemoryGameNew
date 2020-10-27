@@ -29,7 +29,10 @@
             <RowDefinition Height="0.6*" />
 
         </Grid.RowDefinitions>
-        <Button Click="Back_Home_Screen" Grid.Column="0">Ga Terug</Button>
+        <Viewbox  Grid.Column="4" Stretch="Uniform">
+            <Button Click="Back_Home_Screen">Ga Terug</Button>
+        </Viewbox>
+        
         <TextBox Grid.Column="3" Grid.Row="2"></TextBox>
         <Viewbox Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
             <Label Foreground="White">Speler 2</Label>
@@ -38,6 +41,9 @@
         <Viewbox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
             <Label Foreground="White">Speler 1</Label>
         </Viewbox>
-        <Button Click="To_Game_Screen" Grid.Row="4" Grid.Column="2" MaxHeight="60" MaxWidth="300">Start Game</Button>
+        <Viewbox  Grid.Row="4" Grid.Column="2" Stretch="Uniform" Margin="5">
+            <Button Click="To_Game_Screen">Start Game</Button>
+        </Viewbox>
+       
     </Grid>
 </Page>

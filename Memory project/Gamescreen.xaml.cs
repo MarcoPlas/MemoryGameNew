@@ -23,15 +23,14 @@ namespace Memory_project
 	public partial class Gamescreen : Page
 	{
 
-        Random rnd = new Random();
+        List<int> imageNumber = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8 }; //makes a list of numbers
+        Random random = new Random(); //creates a variable called random
 
         public Gamescreen()
         {
             InitializeComponent();
             AddImages();
             Grid.SetColumn(MyButton, 7);
-            MyButton.FontSize = 22;
-            MyButton_1.FontSize = 22;
             Grid.SetColumn(MyButton_1, 7);
             Grid.SetRow(MyButton_1, 1);
         }
@@ -74,15 +73,20 @@ namespace Memory_project
         {
             List<ImageSource> result = new List<ImageSource>();
 
-            for (int i = 0; i < 16; i++)
+            for (int a = 0; a < 16; a++)
             {
-                int nr = i % 8 + 1;
-                Uri path = new Uri("Images/" + nr + ".png", UriKind.Relative);
-                result.Add(new BitmapImage(path));
+                for (int i = 0; i < imageNumber.Count;) //keeps going until list is empty
+                {
+                    int numberRandom = random.Next(0, imageNumber.Count); //selects a random number between 0 and the amount of numbers still in the list
+                    int numberValue = imageNumber[numberRandom]; //converts numberRandom into a usable value
+                    Console.WriteLine(numberValue); //writes the numberValue as a line for testing purposes
+                    imageNumber.RemoveAt(numberRandom); //removes the selected number from the list so it can't be selected again
+                    Uri path = new Uri("Images/" + numberValue + ".png", UriKind.Relative);
+                    result.Add(new BitmapImage(path));
+                }
             }
             return result;
         }
-
 
 
         public void Back_Start_Game(object sender, RoutedEventArgs e)

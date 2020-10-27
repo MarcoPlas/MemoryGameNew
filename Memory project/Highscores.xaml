@@ -43,8 +43,26 @@
             <TextBox TextAlignment="Center" Grid.Row="2">Henk</TextBox>
             <TextBox TextAlignment="Center" Grid.Column="2" Grid.Row="2">355</TextBox>
         </Grid>
-        <Label Content="Highscores" FontSize="60" Grid.ColumnSpan="3" HorizontalAlignment="Center" Foreground="White"/>
-        <Button  Background="White" Grid.Column="2" Click="Back_Home_Screen" Width="100" Height="20" Margin="41,32,32,30" Grid.Row="2">Terug</Button>
+        <Grid Grid.Column="2" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="40*"/>
+                <ColumnDefinition Width="30*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="30*"/>
+            </Grid.RowDefinitions>
+            <Viewbox Grid.Row="1" Grid.Column ="1" Stretch="Uniform">
+                <Button Click="Back_Home_Screen" MinWidth="100" MinHeight="20" Grid.Row="2">Terug</Button>
+            </Viewbox>
+        </Grid>
+        <Viewbox Grid.ColumnSpan="3" HorizontalAlignment="Center">
+            <Label Content="Highscores" Foreground="White"/>
+        </Viewbox>
+       
     </Grid>
 
 </Page>

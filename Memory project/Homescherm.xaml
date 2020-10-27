@@ -25,9 +25,14 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
-        <Button Content="Start Spel" Click="Start_Game_Click" FontSize="40" Grid.Column="1" Grid.Row="3" Margin="10"/>
-        <Button Content="Highscores" Click="Highscores_Click" FontSize="40" Grid.Column="1" Grid.Row="2" Margin="10"/>
-        <Label Content="Harry Potter Memory" FontSize="60" Grid.ColumnSpan="3" HorizontalAlignment="Center" Foreground="White"/>
+        <Viewbox Grid.Column="1" Grid.Row="3" Stretch="Uniform" Margin="10">
+        <Button Content="Start Spel" Click="Start_Game_Click"/>
+        </Viewbox>
+        <Viewbox Grid.Column="1" Grid.Row="2" Stretch="Uniform" Margin="10">
+            <Button Content="Highscores" Click="Highscores_Click"/>
+        </Viewbox>
+        <Viewbox Grid.ColumnSpan="3" HorizontalAlignment="Center">
+            <Label Content="Harry Potter Memory" Foreground="White"/>
+        </Viewbox>
     </Grid>
 </Page>
