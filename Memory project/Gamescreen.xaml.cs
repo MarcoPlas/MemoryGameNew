@@ -22,8 +22,8 @@ namespace Memory_project
 	/// </summary>
 	public partial class Gamescreen : Page
 	{
-        string player_1;
-        string player_2;
+        public string player_1; //name of player 1
+        public string player_2; //name of player 2
 
         List<int> imageNumber = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8 }; //makes a list of numbers
         Random random = new Random(); //creates a variable called random
@@ -31,15 +31,14 @@ namespace Memory_project
         public Gamescreen(string player1, string player2)
         {
             InitializeComponent();
-            player_1 = player1;
+            player_1 = player1; 
             player_2 = player2;
-            
 
-            player01.Content = (player1);
-            player02.Content = (player2);
+            player01.Content = player_1; //set player name 1 on screen
+            player02.Content = player_2; //set player name 2 on screen
 
-            AddImages();
-            Grid.SetColumn(MyButton, 7);
+            AddImages(); 
+            Grid.SetColumn(MyButton, 7); 
             Grid.SetColumn(MyButton_1, 7);
             Grid.SetRow(MyButton_1, 1);
         }
@@ -47,66 +46,64 @@ namespace Memory_project
 
         public void AddImages()
         {
-            List<ImageSource> images = GetImageList();
-            for (int r = 1; r <= 4; r++)
+            List<ImageSource> images = GetImageList(); //Goes to the function GetImageList. In that function the front of the cards will be added
+            for (int r = 1; r <= 4; r++) //in which rows the images needed to be placed
             {
-                for (int c = 2; c < 6; c++)
+                for (int c = 2; c < 6; c++) //in which colums the images needed to be placed
                 {
 
-                    Image BackgroundImage = new Image();
-                    Uri path = new Uri("Images/Backside.png", UriKind.Relative);
-                    BackgroundImage.Source = new BitmapImage(path);
-                    BackgroundImage.Margin = new Thickness(4);
-                    BackgroundImage.Tag = images.First();
-                    images.RemoveAt(0);
-                    BackgroundImage.MouseDown += new MouseButtonEventHandler(TurnCard);
-                    Grid.SetColumn(BackgroundImage, c);
-                    Grid.SetRow(BackgroundImage, r);
-                    GameGrid.Children.Add(BackgroundImage);
+                    Image BackgroundImage = new Image(); //Make image as backside card 
+                    Uri path = new Uri("Images/Backside.png", UriKind.Relative); //The uri of the backside card
+                    BackgroundImage.Source = new BitmapImage(path); //Display the backside card
+                    BackgroundImage.Margin = new Thickness(4); //margin of the backside card
+                    BackgroundImage.Tag = images.First(); 
+                    images.RemoveAt(0); 
+                    BackgroundImage.MouseDown += new MouseButtonEventHandler(TurnCard); //when clicked on card it goes to the funtion TurnCard. TurnCard function will show the front
+                    Grid.SetColumn(BackgroundImage, c); //Set the columns of the background images
+                    Grid.SetRow(BackgroundImage, r); //Set the rows of the background images
+                    GameGrid.Children.Add(BackgroundImage); //Adding the images to the grid. Gamegrid is the name of the grid
                 }
             }
         }
-
-        //TODO: Randomise Kaarten
         //TODO: Kaarten weer terug draaien
         //TODO: Een 6x6 veld en 8x8 veld
 
 
         public void TurnCard(object sender, MouseButtonEventArgs e)
         {
-            Image card = (Image)sender;
-            ImageSource front = (ImageSource)card.Tag;
-            card.Source = front;
+            Image card = (Image)sender; //Looks which image is clicked
+            ImageSource front = (ImageSource)card.Tag; //checking which is the front card
+            card.Source = front; //displays the front cards
         }
 
         public List<ImageSource> GetImageList()
         {
-            List<ImageSource> result = new List<ImageSource>();
+            List<ImageSource> result = new List<ImageSource>(); //list with the images
 
-            for (int a = 0; a < 16; a++)
+            for (int a = 0; a < 16; a++) //keeps going until 16 because of the 16 cards
             {
                 for (int i = 0; i < imageNumber.Count;) //keeps going until list is empty
                 {
                     int numberRandom = random.Next(0, imageNumber.Count); //selects a random number between 0 and the amount of numbers still in the list
                     int numberValue = imageNumber[numberRandom]; //converts numberRandom into a usable value
                     imageNumber.RemoveAt(numberRandom); //removes the selected number from the list so it can't be selected again
-                    Uri path = new Uri("Images/" + numberValue + ".png", UriKind.Relative);
-                    result.Add(new BitmapImage(path));
+                    Uri path = new Uri("Images/" + numberValue + ".png", UriKind.Relative); //Making an uri for the path of the card images
+                    result.Add(new BitmapImage(path)); //Adding the image on it's place
                 }
             }
-            return result;
+            return result; 
         }
 
 
         public void Back_Start_Game(object sender, RoutedEventArgs e)
         {
-            StartGame startgame = new StartGame();
-            this.NavigationService.Navigate(startgame);
+            this.NavigationService.Navigate(new StartGame()); //navigate to the StartGame screen
         }
-        public void To_End_Screen(object sender, RoutedEventArgs e)
+        public void To_End_Screen(object sender, RoutedEventArgs e) //Click function of the button
         {
-            Endscreen endscreen = new Endscreen(player_1, player_2);
-            this.NavigationService.Navigate(endscreen);
+            this.NavigationService.Navigate(new Endscreen(player_1, player_2)); //navigate to endscreen and send the name from the players
+            //TODO: Send score
+            //TODO: auto to endscreen when all cards are matched
         }
     }
 }

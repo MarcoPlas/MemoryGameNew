@@ -36,7 +36,7 @@ namespace Memory_project
 		}
 		public void To_Game_Screen(object sender, RoutedEventArgs e)
 		{
-			Gamescreen gamescreen = new Gamescreen(player1, player2);
+			//Gamescreen gamescreen = new Gamescreen(player1, player2);
 
 			player1 = Inputplayer1.Text;
 			player2 = Inputplayer2.Text;
@@ -50,7 +50,7 @@ namespace Memory_project
 				player2 = "Player 2";
 			}
 			
-			this.NavigationService.Navigate(gamescreen);
+			this.NavigationService.Navigate(new Gamescreen(player1, player2));
 
 		}
 
