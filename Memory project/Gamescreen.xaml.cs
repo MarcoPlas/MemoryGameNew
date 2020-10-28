@@ -80,8 +80,7 @@ namespace Memory_project
         {
             List<ImageSource> result = new List<ImageSource>(); //list with the images
 
-            for (int a = 0; a < 16; a++) //keeps going until 16 because of the 16 cards
-            {
+            
                 for (int i = 0; i < imageNumber.Count;) //keeps going until list is empty
                 {
                     int numberRandom = random.Next(0, imageNumber.Count); //selects a random number between 0 and the amount of numbers still in the list
@@ -90,7 +89,7 @@ namespace Memory_project
                     Uri path = new Uri("Images/" + numberValue + ".png", UriKind.Relative); //Making an uri for the path of the card images
                     result.Add(new BitmapImage(path)); //Adding the image on it's place
                 }
-            }
+            
             return result; 
         }
 
