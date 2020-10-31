@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -24,29 +25,35 @@ namespace Memory_project
 	{
         public string player_1; //name of player 1
         public string player_2; //name of player 2
+        object first = null;
+        object second = null;
+        object first_place = null;
+        object second_place = null;
+        List<ImageSource> images;
 
         List<int> imageNumber = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8 }; //makes a list of numbers
         Random random = new Random(); //creates a variable called random
+        
 
         public Gamescreen(string player1, string player2)
         {
             InitializeComponent();
             player_1 = player1; 
             player_2 = player2;
+            images = GetImageList(); //Goes to the function GetImageList. In that function the front of the cards will be added
 
             player01.Content = player_1; //set player name 1 on screen
             player02.Content = player_2; //set player name 2 on screen
 
-            AddImages(); 
+            AddImages(images); 
             Grid.SetColumn(MyButton, 7); 
             Grid.SetColumn(MyButton_1, 7);
             Grid.SetRow(MyButton_1, 1);
         }
 
 
-        public void AddImages()
+        public void AddImages(List<ImageSource> images)
         {
-            List<ImageSource> images = GetImageList(); //Goes to the function GetImageList. In that function the front of the cards will be added
             for (int r = 1; r <= 4; r++) //in which rows the images needed to be placed
             {
                 for (int c = 2; c < 6; c++) //in which colums the images needed to be placed
@@ -74,6 +81,49 @@ namespace Memory_project
             Image card = (Image)sender; //Looks which image is clicked
             ImageSource front = (ImageSource)card.Tag; //checking which is the front card
             card.Source = front; //displays the front cards
+            List<ImageSource> images_1 = images;
+
+
+            if (first == null)
+            {
+                first = card.Tag;
+                first_place = card;
+            }
+            else
+            {
+                second = card.Tag;
+                second_place = card;
+                if (first.ToString() == second.ToString())
+                {
+                    GameGrid.Children.Remove((UIElement)first_place);
+                    GameGrid.Children.Remove((UIElement)second_place);
+                    first = null;
+                    second = null;
+
+                }
+                else
+                {
+                    first = null;
+                    second = null;
+                    for (int r = 1; r <= 4; r++) //in which rows the images needed to be placed
+                    {
+                        for (int c = 2; c < 6; c++) //in which colums the images needed to be placed
+                        {
+
+                            Image BackgroundImage = new Image(); //Make image as backside card 
+                            Uri path = new Uri("Images/Backside.png", UriKind.Relative); //The uri of the backside card
+                            BackgroundImage.Source = new BitmapImage(path); //Display the backside card
+                            BackgroundImage.Margin = new Thickness(4); //margin of the backside card
+                            BackgroundImage.MouseDown += new MouseButtonEventHandler(TurnCard); //when clicked on card it goes to the funtion TurnCard. TurnCard function will show the front
+                            Grid.SetColumn(BackgroundImage, c); //Set the columns of the background images
+                            Grid.SetRow(BackgroundImage, r); //Set the rows of the background images
+                            GameGrid.Children.Add(BackgroundImage); //Adding the images to the grid. Gamegrid is the name of the grid
+                        }
+                    }
+
+                }
+            }
+
         }
 
         public List<ImageSource> GetImageList()
