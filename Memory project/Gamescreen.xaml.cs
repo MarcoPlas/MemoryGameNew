@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Windows.Threading;
 
 namespace Memory_project
 {
@@ -44,11 +44,13 @@ namespace Memory_project
             player01.Content = player_1; //set player name 1 on screen
             player02.Content = player_2; //set player name 2 on screen
 
+
             AddImages(images); 
             Grid.SetColumn(MyButton, 7); 
             Grid.SetColumn(MyButton_1, 7);
             Grid.SetRow(MyButton_1, 1);
         }
+
 
 
         public void AddImages(List<ImageSource> images)
@@ -74,11 +76,13 @@ namespace Memory_project
         //TODO: Een 6x6 veld en 8x8 veld
 
 
-        public void TurnCard(/*int r, int c,*/ object sender, MouseButtonEventArgs e)
+        public void TurnCard(object sender, MouseButtonEventArgs e)
         {
+
             Image card = (Image)sender; //Looks which image is clicked
             ImageSource front = (ImageSource)card.Tag; //checking which is the front card
             card.Source = front; //displays the front cards
+
 
 
             if (first == null)
@@ -90,38 +94,32 @@ namespace Memory_project
             {
                 second = card.Tag;
                 second_place = card;
-                if (first_place == second_place)
+                if (first.ToString() == second.ToString())
                 {
+                    ((Image)first_place).Source = null;
+                    ((Image)second_place).Source = null;
+                    first = null;
                     second = null;
-                    second_place = null;
 
                 }
                 else
                 {
-                    if (first.ToString() == second.ToString())
-                    {
+                    //MessageBox.Show("test");
+                    Uri path = new Uri("Images/Backside.png", UriKind.Relative);
+                    //MessageBox.Show("test");
+                    ((Image)second_place).Source = new BitmapImage(path);
+                    ((Image)first_place).Source = new BitmapImage(path);
 
-                        GameGrid.Children.Remove((UIElement)first_place);
-                        GameGrid.Children.Remove((UIElement)second_place);
-                        first = null;
-                        second = null;
-                        first_place = null;
-                        second_place = null;
-                    }
-                    else
-                    {
-                        Uri path = new Uri("Images/Backside.png", UriKind.Relative); //The uri of the backside card
-                        card.Source = new BitmapImage(path); //Display the backside card
-                        first = null;
-                        second = null;
-                        first_place = null;
-                        second_place = null;
-                    }
+
+
+
+                    first = null;
+                    second = null;
+
+
                 }
             }
-            
 
-            
         }
 
         public List<ImageSource> GetImageList()
@@ -142,6 +140,7 @@ namespace Memory_project
         }
 
 
+
         public void Back_Start_Game(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new StartGame()); //navigate to the StartGame screen
@@ -152,5 +151,7 @@ namespace Memory_project
             //TODO: Send score
             //TODO: auto to endscreen when all cards are matched
         }
+
+        
     }
 }
