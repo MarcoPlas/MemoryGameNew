@@ -97,6 +97,7 @@ namespace Memory_project
                 second_place = card;
                 if (first.ToString() == second.ToString())
                 {
+                    await Task.Delay(800);
                     ((Image)first_place).Source = null;
                     ((Image)second_place).Source = null;
                     first = null;
