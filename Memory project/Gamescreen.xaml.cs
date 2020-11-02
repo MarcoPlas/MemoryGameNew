@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Threading;
 
 namespace Memory_project
 {
@@ -76,7 +77,7 @@ namespace Memory_project
         //TODO: Een 6x6 veld en 8x8 veld
 
 
-        public void TurnCard(object sender, MouseButtonEventArgs e)
+        public async void TurnCard(object sender, MouseButtonEventArgs e)
         {
 
             Image card = (Image)sender; //Looks which image is clicked
@@ -107,6 +108,7 @@ namespace Memory_project
                     //MessageBox.Show("test");
                     Uri path = new Uri("Images/Backside.png", UriKind.Relative);
                     //MessageBox.Show("test");
+                    await Task.Delay(800);
                     ((Image)second_place).Source = new BitmapImage(path);
                     ((Image)first_place).Source = new BitmapImage(path);
 
