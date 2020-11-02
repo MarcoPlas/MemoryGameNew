@@ -95,32 +95,40 @@ namespace Memory_project
             {
                 second = card.Tag;
                 second_place = card;
-                if (first.ToString() == second.ToString())
+                if (second_place == first_place)
                 {
-                    await Task.Delay(800);
-                    ((Image)first_place).Source = null;
-                    ((Image)second_place).Source = null;
-                    first = null;
+                    second_place = null;
                     second = null;
-
                 }
                 else
                 {
-                    //MessageBox.Show("test");
-                    Uri path = new Uri("Images/Backside.png", UriKind.Relative);
-                    //MessageBox.Show("test");
-                    await Task.Delay(800);
-                    ((Image)second_place).Source = new BitmapImage(path);
-                    ((Image)first_place).Source = new BitmapImage(path);
+                    if (first.ToString() == second.ToString())
+                    {
+                        GameGrid.IsHitTestVisible = false;
+                        await Task.Delay(800);
+                        ((Image)first_place).Source = null;
+                        ((Image)second_place).Source = null;
+                        first = null;
+                        second = null;
+                        GameGrid.IsHitTestVisible = true;
 
-
-
-
-                    first = null;
-                    second = null;
-
-
+                    }
+                    else
+                    {
+                        //MessageBox.Show("test");
+                        Uri path = new Uri("Images/Backside.png", UriKind.Relative);
+                        //MessageBox.Show("test");
+                        GameGrid.IsHitTestVisible = false;
+                        await Task.Delay(800);
+                        
+                        ((Image)second_place).Source = new BitmapImage(path);
+                        ((Image)first_place).Source = new BitmapImage(path);
+                        first = null;
+                        second = null;
+                        GameGrid.IsHitTestVisible = true;
+                    }
                 }
+               
             }
 
         }
