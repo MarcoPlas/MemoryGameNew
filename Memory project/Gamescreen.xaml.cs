@@ -19,11 +19,11 @@ using System.Threading;
 
 namespace Memory_project
 {
-	/// <summary>
-	/// Interaction logic for Gamescreen.xaml
-	/// </summary>
-	public partial class Gamescreen : Page
-	{
+    /// <summary>
+    /// Interaction logic for Gamescreen.xaml
+    /// </summary>
+    public partial class Gamescreen : Page
+    {
         public string player_1; //name of player 1
         public string player_2; //name of player 2
         public int player_1_score;
@@ -41,7 +41,7 @@ namespace Memory_project
         public Gamescreen(string player1, string player2)
         {
             InitializeComponent();
-            player_1 = player1; 
+            player_1 = player1;
             player_2 = player2;
             images = GetImageList(); //Goes to the function GetImageList. In that function the front of the cards will be added
 
@@ -50,8 +50,8 @@ namespace Memory_project
             player01.Foreground = Brushes.Red;
 
 
-            AddImages(images); 
-            Grid.SetColumn(MyButton, 7); 
+            AddImages(images);
+            Grid.SetColumn(MyButton, 7);
             Grid.SetColumn(MyButton_1, 7);
             Grid.SetRow(MyButton_1, 1);
         }
@@ -68,8 +68,8 @@ namespace Memory_project
                     Uri path = new Uri("Images/Backside.png", UriKind.Relative); //The uri of the backside card
                     BackgroundImage.Source = new BitmapImage(path); //Display the backside card
                     BackgroundImage.Margin = new Thickness(4); //margin of the backside card
-                    BackgroundImage.Tag = images.First(); 
-                    images.RemoveAt(0); 
+                    BackgroundImage.Tag = images.First();
+                    images.RemoveAt(0);
                     BackgroundImage.MouseDown += new MouseButtonEventHandler(TurnCard); //when clicked on card it goes to the funtion TurnCard. TurnCard function will show the front
                     Grid.SetColumn(BackgroundImage, c); //Set the columns of the background images
                     Grid.SetRow(BackgroundImage, r); //Set the rows of the background images
@@ -115,20 +115,20 @@ namespace Memory_project
                         first = null;
                         second = null;
                         GameGrid.IsHitTestVisible = true;
-						if (player1turn == true) //check which player's turn it is
-						{
+                        if (player1turn == true) //check which player's turn it is
+                        {
                             player_1_score++;
-                            player01.Content = player_1  + ": " + player_1_score; 
+                            player01.Content = player_1 + ": " + player_1_score;
                             //add a point to player 1's score here
                         }
-						else
-						{
+                        else
+                        {
                             player_2_score++;
-                            
-                            player02.Content = player_2 + ": " + player_2_score; 
+
+                            player02.Content = player_2 + ": " + player_2_score;
                             //add a point to player 2's score here
                         }
-                        if(player_2_score + player_1_score == 8)
+                        if (player_2_score + player_1_score == 8)
                         {
                             await Task.Delay(800);
                             this.NavigationService.Navigate(new Endscreen(player_1_score, player_2_score, player_1, player_2));
@@ -141,29 +141,29 @@ namespace Memory_project
                         //MessageBox.Show("test");
                         GameGrid.IsHitTestVisible = false;
                         await Task.Delay(800);
-                        
+
                         ((Image)second_place).Source = new BitmapImage(path);
                         ((Image)first_place).Source = new BitmapImage(path);
                         first = null;
                         second = null;
                         GameGrid.IsHitTestVisible = true;
-						if (player1turn == true) //check which player's turn it is
+                        if (player1turn == true) //check which player's turn it is
                         {
                             player1turn = false; //switch turn to player 2
                             player02.Foreground = Brushes.Red;
                             player01.Foreground = Brushes.White;
-                            
-						}
-						else
-						{
+
+                        }
+                        else
+                        {
                             player1turn = true; //switch turn to player 1
                             player01.Foreground = Brushes.Red;
                             player02.Foreground = Brushes.White;
-                            
+
                         }
                     }
                 }
-               
+
             }
 
         }
@@ -172,17 +172,17 @@ namespace Memory_project
         {
             List<ImageSource> result = new List<ImageSource>(); //list with the images
 
-            
-                for (int i = 0; i < imageNumber.Count;) //keeps going until list is empty
-                {
-                    int numberRandom = random.Next(0, imageNumber.Count); //selects a random number between 0 and the amount of numbers still in the list
-                    int numberValue = imageNumber[numberRandom]; //converts numberRandom into a usable value
-                    imageNumber.RemoveAt(numberRandom); //removes the selected number from the list so it can't be selected again
-                    Uri path = new Uri("Images/" + numberValue + ".png", UriKind.Relative); //Making an uri for the path of the card images
-                    result.Add(new BitmapImage(path)); //Adding the image on it's place
-                }
-            
-            return result; 
+
+            for (int i = 0; i < imageNumber.Count;) //keeps going until list is empty
+            {
+                int numberRandom = random.Next(0, imageNumber.Count); //selects a random number between 0 and the amount of numbers still in the list
+                int numberValue = imageNumber[numberRandom]; //converts numberRandom into a usable value
+                imageNumber.RemoveAt(numberRandom); //removes the selected number from the list so it can't be selected again
+                Uri path = new Uri("Images/" + numberValue + ".png", UriKind.Relative); //Making an uri for the path of the card images
+                result.Add(new BitmapImage(path)); //Adding the image on it's place
+            }
+
+            return result;
         }
 
 
@@ -193,24 +193,26 @@ namespace Memory_project
         }
         public void To_End_Screen(object sender, RoutedEventArgs e) //Click function of the button
         {
-            this.NavigationService.Navigate(new Endscreen(player_1_score, player_2_score ,player_1, player_2)); //navigate to endscreen and send the name from the players
+            this.NavigationService.Navigate(new Endscreen(player_1_score, player_2_score, player_1, player_2)); //navigate to endscreen and send the name from the players
             //TODO: Send score
             //TODO: auto to endscreen when all cards are matched
         }
         private void Save_Game(object sender, RoutedEventArgs e)
         {
+
+            using (StreamReader reader = new StreamReader(@".\SaveGames\savegame.sav"))
+            {
+                // Step 2: call ReadLine until null.
+            }
             using (StreamWriter writer = new StreamWriter(@".\SaveGames\savegame.sav"))
             {
-                writer.WriteLine(player_1);
-                writer.WriteLine(player_1_score);
-                writer.WriteLine(player_2);
-                writer.WriteLine(player_2_score);
-            }
-        }
 
-        //private void Load_Game(object sender, RoutedEventArgs e)
-        //{
-        //    throw new NotImplementedException();
-        //}
+            }
+
+            //private void Load_Game(object sender, RoutedEventArgs e)
+            //{
+            //    throw new NotImplementedException();
+            //}
+        }
     }
 }
