@@ -37,6 +37,24 @@ namespace Memory_project
         Random random = new Random(); //creates a variable called random
         bool player1turn = true;
         public string thepoint = ":";
+        int firstscore = 0;
+        int secondscore = 0;
+        int thirdscore = 0;
+        int fourthscore = 0;
+        int fhithscore = 0;
+        int sixthscore = 0;
+        string namefirstscore;
+        string namesecondscore;
+        string namethirdscore;
+        string namefourthscore;
+        string namefhithscore;
+        string namesixthscore;
+        List<int> scores = new List<int>();
+        Dictionary<string, int> namevalue = new Dictionary<string, int>
+        {
+            
+        };
+
 
         public Gamescreen(string player1, string player2)
         {
@@ -131,6 +149,60 @@ namespace Memory_project
                         if (player_2_score + player_1_score == 8)
                         {
                             await Task.Delay(800);
+                            using (StreamReader reader = new StreamReader(@".\SaveGames\savegame.sav"))
+                            {
+                                namefirstscore = reader.ReadLine();
+                                firstscore = Convert.ToInt32(reader.ReadLine());
+                                namesecondscore = reader.ReadLine();
+                                secondscore = Convert.ToInt32(reader.ReadLine());
+                                namethirdscore = reader.ReadLine();
+                                thirdscore = Convert.ToInt32(reader.ReadLine());
+                                namefourthscore = reader.ReadLine();
+                                fourthscore = Convert.ToInt32(reader.ReadLine());
+                                
+                            }
+                            namefhithscore = player_1;
+                            namesixthscore = player_2;
+                            fhithscore = player_1_score;
+                            sixthscore = player_2_score;
+                            if (firstscore != 0)
+                            {
+                                namevalue.Add(namefirstscore, firstscore);
+                            }
+                            if (secondscore != 0)
+                            {
+                                namevalue.Add(namesecondscore, secondscore);
+                            }
+
+                            if (thirdscore != 0)
+                            {
+                                namevalue.Add(namethirdscore, thirdscore);
+                            }
+                            if (fourthscore != 0)
+                            {
+                                namevalue.Add(namefourthscore, fourthscore);
+                            }
+                            if(fhithscore != 0)
+                            {
+                                namevalue.Add(namefhithscore, fhithscore);
+                            }
+                            if (sixthscore != 0)
+                            {
+                                namevalue.Add(namesixthscore, sixthscore);
+                            }
+                            
+                            
+                            
+
+                            
+                            using (StreamWriter writer = new StreamWriter(@".\SaveGames\savegame.sav"))
+                            {
+                                foreach (KeyValuePair<string, int> author in namevalue.OrderByDescending(Key => Key.Value))
+                                {
+                                    writer.WriteLine(author.Key);
+                                    writer.WriteLine(author.Value);
+                                }
+                            }
                             this.NavigationService.Navigate(new Endscreen(player_1_score, player_2_score, player_1, player_2));
                         }
                     }
@@ -196,23 +268,6 @@ namespace Memory_project
             this.NavigationService.Navigate(new Endscreen(player_1_score, player_2_score, player_1, player_2)); //navigate to endscreen and send the name from the players
             //TODO: Send score
             //TODO: auto to endscreen when all cards are matched
-        }
-        private void Save_Game(object sender, RoutedEventArgs e)
-        {
-
-            using (StreamReader reader = new StreamReader(@".\SaveGames\savegame.sav"))
-            {
-                // Step 2: call ReadLine until null.
-            }
-            using (StreamWriter writer = new StreamWriter(@".\SaveGames\savegame.sav"))
-            {
-
-            }
-
-            //private void Load_Game(object sender, RoutedEventArgs e)
-            //{
-            //    throw new NotImplementedException();
-            //}
         }
     }
 }

@@ -38,10 +38,10 @@
             </Grid.RowDefinitions>
             <Label HorizontalContentAlignment="Center" Background="Gray">Spelers</Label>
             <Label HorizontalContentAlignment="Center" Grid.Column="2" Background="Gray">Score</Label>
-            <Label HorizontalContentAlignment="Center" Background="White" Grid.Row="1" Name="Highestscoresname">Piet</Label>
-            <Label HorizontalContentAlignment="Center" Background="White" Grid.Column="2" Grid.Row="1" Name="Highestscore">382</Label>
-            <Label HorizontalContentAlignment="Center" Background="White" Grid.Row="2" Name="lowestscoresname1">Henk</Label>
-            <Label HorizontalContentAlignment="Center" Background="White" Grid.Column="2" Grid.Row="2" Name="lowestscore1">355</Label>
+            <Label HorizontalContentAlignment="Center" Background="White" Grid.Row="1" Name="Highestscoresname"></Label>
+            <Label HorizontalContentAlignment="Center" Background="White" Grid.Column="2" Grid.Row="1" Name="Highestscore"></Label>
+            <Label HorizontalContentAlignment="Center" Background="White" Grid.Row="2" Name="lowestscoresname1"></Label>
+            <Label HorizontalContentAlignment="Center" Background="White" Grid.Column="2" Grid.Row="2" Name="lowestscore1"></Label>
 
         </Grid>
         <Grid Grid.Column="1" Grid.Row="2">
