@@ -39,10 +39,10 @@
             <Button Content="Naar Endscreen" Click="To_End_Screen"></Button>
         </Viewbox>
         <Viewbox Grid.Row="2" Grid.Column="0">
-            <Label Foreground="White" Name="player01">Name Player 1</Label>
+            <Label Foreground="White" Name="player01"></Label>
         </Viewbox>
         <Viewbox  Grid.Row="3" Grid.Column="0">
-            <Label Foreground="white" Name="player02">Name Player 2</Label>
+            <Label Foreground="white" Name="player02"></Label>
         </Viewbox>
         <Viewbox Grid.Row="1">
             <Button Click="Save_Game">Save Game</Button>

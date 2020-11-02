@@ -36,6 +36,7 @@ namespace Memory_project
         List<int> imageNumber = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8 }; //makes a list of numbers
         Random random = new Random(); //creates a variable called random
         bool player1turn = true;
+        public string thepoint = ":";
 
         public Gamescreen(string player1, string player2)
         {
@@ -44,8 +45,8 @@ namespace Memory_project
             player_2 = player2;
             images = GetImageList(); //Goes to the function GetImageList. In that function the front of the cards will be added
 
-            player01.Content = player_1; //set player name 1 on screen
-            player02.Content = player_2; //set player name 2 on screen
+            player01.Content = player_1 + ": " + player_1_score;
+            player02.Content = player_2 + ": " + player_2_score;
 
 
             AddImages(images); 
@@ -116,14 +117,14 @@ namespace Memory_project
 						if (player1turn == true) //check which player's turn it is
 						{
                             player_1_score++;
-                            MessageBox.Show(Convert.ToString(player_1_score)); //This message box is for testing purposes, should be removed later
+                            player01.Content = player_1  + ": " + player_1_score; //This message box is for testing purposes, should be removed later
                             //add a point to player 1's score here
                         }
 						else
 						{
                             player_2_score++;
                             
-                            MessageBox.Show(Convert.ToString(player_2_score)); //This message box is for testing purposes, should be removed later
+                            player02.Content = player_2 + ": " + player_2_score; //This message box is for testing purposes, should be removed later
                             //add a point to player 2's score here
                         }
                         if(player_2_score + player_1_score == 8)
