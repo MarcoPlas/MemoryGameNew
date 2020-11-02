@@ -30,10 +30,9 @@ namespace Memory_project
         object first_place = null;
         object second_place = null;
         List<ImageSource> images;
-
         List<int> imageNumber = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8 }; //makes a list of numbers
         Random random = new Random(); //creates a variable called random
-        
+
 
         public Gamescreen(string player1, string player2)
         {
@@ -54,11 +53,10 @@ namespace Memory_project
 
         public void AddImages(List<ImageSource> images)
         {
-            for (int r = 1; r <= 4; r++) //in which rows the images needed to be placed
+            for (int r = 1; r < 5; r++) //in which rows the images needed to be placed
             {
                 for (int c = 2; c < 6; c++) //in which colums the images needed to be placed
                 {
-
                     Image BackgroundImage = new Image(); //Make image as backside card 
                     Uri path = new Uri("Images/Backside.png", UriKind.Relative); //The uri of the backside card
                     BackgroundImage.Source = new BitmapImage(path); //Display the backside card
@@ -76,12 +74,11 @@ namespace Memory_project
         //TODO: Een 6x6 veld en 8x8 veld
 
 
-        public void TurnCard(object sender, MouseButtonEventArgs e)
+        public void TurnCard(/*int r, int c,*/ object sender, MouseButtonEventArgs e)
         {
             Image card = (Image)sender; //Looks which image is clicked
             ImageSource front = (ImageSource)card.Tag; //checking which is the front card
             card.Source = front; //displays the front cards
-            List<ImageSource> images_1 = images;
 
 
             if (first == null)
@@ -93,37 +90,38 @@ namespace Memory_project
             {
                 second = card.Tag;
                 second_place = card;
-                if (first.ToString() == second.ToString())
+                if (first_place == second_place)
                 {
-                    GameGrid.Children.Remove((UIElement)first_place);
-                    GameGrid.Children.Remove((UIElement)second_place);
-                    first = null;
                     second = null;
+                    second_place = null;
 
                 }
                 else
                 {
-                    first = null;
-                    second = null;
-                    for (int r = 1; r <= 4; r++) //in which rows the images needed to be placed
+                    if (first.ToString() == second.ToString())
                     {
-                        for (int c = 2; c < 6; c++) //in which colums the images needed to be placed
-                        {
 
-                            Image BackgroundImage = new Image(); //Make image as backside card 
-                            Uri path = new Uri("Images/Backside.png", UriKind.Relative); //The uri of the backside card
-                            BackgroundImage.Source = new BitmapImage(path); //Display the backside card
-                            BackgroundImage.Margin = new Thickness(4); //margin of the backside card
-                            BackgroundImage.MouseDown += new MouseButtonEventHandler(TurnCard); //when clicked on card it goes to the funtion TurnCard. TurnCard function will show the front
-                            Grid.SetColumn(BackgroundImage, c); //Set the columns of the background images
-                            Grid.SetRow(BackgroundImage, r); //Set the rows of the background images
-                            GameGrid.Children.Add(BackgroundImage); //Adding the images to the grid. Gamegrid is the name of the grid
-                        }
+                        GameGrid.Children.Remove((UIElement)first_place);
+                        GameGrid.Children.Remove((UIElement)second_place);
+                        first = null;
+                        second = null;
+                        first_place = null;
+                        second_place = null;
                     }
-
+                    else
+                    {
+                        Uri path = new Uri("Images/Backside.png", UriKind.Relative); //The uri of the backside card
+                        card.Source = new BitmapImage(path); //Display the backside card
+                        first = null;
+                        second = null;
+                        first_place = null;
+                        second_place = null;
+                    }
                 }
             }
+            
 
+            
         }
 
         public List<ImageSource> GetImageList()

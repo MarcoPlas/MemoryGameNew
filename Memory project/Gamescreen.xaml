@@ -38,7 +38,11 @@
         <Viewbox  x:Name="MyButton_1" Stretch="Uniform">
             <Button Content="Naar Endscreen" Click="To_End_Screen"></Button>
         </Viewbox>
-        <Label Grid.Row="2" Grid.Column="0" Foreground="White" Name="player01">je kale oma</Label>
-        <Label Grid.Row="3" Grid.Column="0" Foreground="white" Name="player02">hbhbh</Label>
+        <Viewbox Grid.Row="2" Grid.Column="0">
+            <Label Foreground="White" Name="player01">Name Player 1</Label>
+        </Viewbox>
+        <Viewbox  Grid.Row="3" Grid.Column="0">
+            <Label Foreground="white" Name="player02">Name Player 2</Label>
+        </Viewbox>
     </Grid>
 </Page>
