@@ -44,5 +44,13 @@
         <Viewbox  Grid.Row="3" Grid.Column="0">
             <Label Foreground="white" Name="player02">Name Player 2</Label>
         </Viewbox>
+        <Viewbox Grid.Row="1">
+            <Button Click="Save_Game">Save Game</Button>
+        </Viewbox>
+        <!--<Viewbox>
+            <Button Click="Load_Game">
+                Load Game
+            </Button>
+        </Viewbox>-->
     </Grid>
 </Page>

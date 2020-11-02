@@ -24,16 +24,32 @@ namespace Memory_project
 
 		string playername1;
 		string playername2;
-
+		int player1score = 0;
+		int player2score = 0;
 		
-		public Endscreen(string player1, string player2)
+		public Endscreen(int player1_score, int player2_score, string player1, string player2)
 		{
 			InitializeComponent();
-
+			player1score = player1_score;
+			player2score = player2_score;
 			playername1 = player1;
 			playername2 = player2;
-
+            if (player1score >= player2score)
+            {
+				Winner.Content = playername1;
+				Loser.Content = playername2;
+				ScoreWinner.Content = player1score;
+				ScoreLoser.Content = player2score;
+            }
+            else if (player2score > player1score)
+            {
+				ScoreWinner.Content = player2score;
+				ScoreLoser.Content = player1score;
+				Winner.Content = playername2;
+				Loser.Content = playername1;
+            }
 			output();
+
 
 		}
 		public void Back_Home_Screen(object sender, RoutedEventArgs e)

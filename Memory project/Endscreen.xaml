@@ -35,9 +35,9 @@
             </Grid.RowDefinitions>
                 <Label  Grid.Column="0" FontSize="35" Background="Gray" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="2" BorderBrush="Black">Spelers</Label>
                 <Label  Grid.Column="1" FontSize="35" Background="Gray" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="2" BorderBrush="Black">Score</Label>
-                <Label  Grid.Column="1" Grid.Row="1" FontSize="25" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="2" BorderBrush="Black">insert score</Label>
+                <Label  Grid.Column="1" Grid.Row="1" FontSize="25" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="2" BorderBrush="Black" Name="ScoreWinner">insert score</Label>
                 <Label  Grid.Column="0" Grid.Row="1" FontSize="25" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="2" BorderBrush="Black" Name="Winner">naam 1</Label>
-                <Label  Grid.Column="1" Grid.Row="2" FontSize="25" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="2" BorderBrush="Black">insert score</Label>
+                <Label  Grid.Column="1" Grid.Row="2" FontSize="25" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="2" BorderBrush="Black" Name="ScoreLoser">insert score</Label>
                 <Label  Grid.Column="0" Grid.Row="2" FontSize="25" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="2" BorderBrush="Black" Name="Loser">naam 2</Label>
             </Grid>
         <Viewbox Grid.Column="0" Grid.Row="3">

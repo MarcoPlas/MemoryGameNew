@@ -129,7 +129,7 @@ namespace Memory_project
                         if(player_2_score + player_1_score == 8)
                         {
                             await Task.Delay(800);
-                            this.NavigationService.Navigate(new Endscreen(player_1_score.ToString(), player_2_score.ToString()));
+                            this.NavigationService.Navigate(new Endscreen(player_1_score, player_2_score, player_1, player_2));
                         }
                     }
                     else
@@ -187,11 +187,24 @@ namespace Memory_project
         }
         public void To_End_Screen(object sender, RoutedEventArgs e) //Click function of the button
         {
-            this.NavigationService.Navigate(new Endscreen(player_1, player_2)); //navigate to endscreen and send the name from the players
+            this.NavigationService.Navigate(new Endscreen(player_1_score, player_2_score ,player_1, player_2)); //navigate to endscreen and send the name from the players
             //TODO: Send score
             //TODO: auto to endscreen when all cards are matched
         }
+        private void Save_Game(object sender, RoutedEventArgs e)
+        {
+            using (StreamWriter writer = new StreamWriter(@".\SaveGames\savegame.sav"))
+            {
+                writer.WriteLine(player_1);
+                writer.WriteLine(player_1_score);
+                writer.WriteLine(player_2);
+                writer.WriteLine(player_2_score);
+            }
+        }
 
-        
+        //private void Load_Game(object sender, RoutedEventArgs e)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
