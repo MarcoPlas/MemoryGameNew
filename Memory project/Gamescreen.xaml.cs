@@ -47,6 +47,7 @@ namespace Memory_project
 
             player01.Content = player_1 + ": " + player_1_score;
             player02.Content = player_2 + ": " + player_2_score;
+            player01.Foreground = Brushes.Red;
 
 
             AddImages(images); 
@@ -117,14 +118,14 @@ namespace Memory_project
 						if (player1turn == true) //check which player's turn it is
 						{
                             player_1_score++;
-                            player01.Content = player_1  + ": " + player_1_score; //This message box is for testing purposes, should be removed later
+                            player01.Content = player_1  + ": " + player_1_score; 
                             //add a point to player 1's score here
                         }
 						else
 						{
                             player_2_score++;
                             
-                            player02.Content = player_2 + ": " + player_2_score; //This message box is for testing purposes, should be removed later
+                            player02.Content = player_2 + ": " + player_2_score; 
                             //add a point to player 2's score here
                         }
                         if(player_2_score + player_1_score == 8)
@@ -149,12 +150,16 @@ namespace Memory_project
 						if (player1turn == true) //check which player's turn it is
                         {
                             player1turn = false; //switch turn to player 2
-                            MessageBox.Show("It's player 2's turn"); //This message box is for testing purposes, should be removed later
+                            player02.Foreground = Brushes.Red;
+                            player01.Foreground = Brushes.White;
+                            
 						}
 						else
 						{
                             player1turn = true; //switch turn to player 1
-                            MessageBox.Show("It's player 1's turn"); //This message box is for testing purposes, should be removed later
+                            player01.Foreground = Brushes.Red;
+                            player02.Foreground = Brushes.White;
+                            
                         }
                     }
                 }
