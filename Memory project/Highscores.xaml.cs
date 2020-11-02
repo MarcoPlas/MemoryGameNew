@@ -39,21 +39,33 @@ namespace Memory_project
 
 				highestscore = reader.ReadLine();
 				highest = Convert.ToInt32(reader.ReadLine());
+                if (highest != 0)
+                {
+					Highestscoresname.Content = highestscore;
+					Highestscore.Content = highest;
+				}
+                
 				lowestscores = reader.ReadLine();
 				lowest = Convert.ToInt32(reader.ReadLine());
-				Highestscoresname.Content = highestscore;
-				Highestscore.Content = highest;
-				lowestscoresname1.Content = lowestscores;
-				lowestscore1.Content = lowest;
+
+				if (lowest != 0)
+				{
+					lowestscoresname1.Content = lowestscores;
+					lowestscore1.Content = lowest;
+				}
+
 				highestscore1 = reader.ReadLine();
 				highest1 = Convert.ToInt32(reader.ReadLine());
-				lowestscores1 = reader.ReadLine();
-				lowest1 = Convert.ToInt32(reader.ReadLine());
+
 				if (highest1 != 0)
 				{
 					Highestscoresname1.Content = highestscore1;
 					hightscore1.Content = highest1;
 				}
+
+				lowestscores1 = reader.ReadLine();
+				lowest1 = Convert.ToInt32(reader.ReadLine());
+				
 				if (lowest1 != 0)
 				{
 					lowestscore2.Content = lowest1;
