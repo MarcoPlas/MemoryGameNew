@@ -33,7 +33,7 @@ namespace Memory_project
         List<ImageSource> images;
         List<int> imageNumber = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8 }; //makes a list of numbers
         Random random = new Random(); //creates a variable called random
-
+        bool player1turn = true;
 
         public Gamescreen(string player1, string player2)
         {
@@ -111,7 +111,16 @@ namespace Memory_project
                         first = null;
                         second = null;
                         GameGrid.IsHitTestVisible = true;
-
+						if (player1turn == true) //check which player's turn it is
+						{
+                            MessageBox.Show("It's still player 1's turn"); //This message box is for testing purposes, should be removed later
+                            //add a point to player 1's score here
+                        }
+						else
+						{
+                            MessageBox.Show("It's still player 2's turn"); //This message box is for testing purposes, should be removed later
+                            //add a point to player 2's score here
+                        }
                     }
                     else
                     {
@@ -126,6 +135,16 @@ namespace Memory_project
                         first = null;
                         second = null;
                         GameGrid.IsHitTestVisible = true;
+						if (player1turn == true) //check which player's turn it is
+                        {
+                            player1turn = false; //switch turn to player 2
+                            MessageBox.Show("It's player 2's turn"); //This message box is for testing purposes, should be removed later
+						}
+						else
+						{
+                            player1turn = true; //switch turn to player 1
+                            MessageBox.Show("It's player 1's turn"); //This message box is for testing purposes, should be removed later
+                        }
                     }
                 }
                
