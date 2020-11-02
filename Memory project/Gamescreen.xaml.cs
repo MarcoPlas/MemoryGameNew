@@ -26,6 +26,8 @@ namespace Memory_project
 	{
         public string player_1; //name of player 1
         public string player_2; //name of player 2
+        public int player_1_score;
+        public int player_2_score;
         object first = null;
         object second = null;
         object first_place = null;
@@ -113,13 +115,21 @@ namespace Memory_project
                         GameGrid.IsHitTestVisible = true;
 						if (player1turn == true) //check which player's turn it is
 						{
-                            MessageBox.Show("It's still player 1's turn"); //This message box is for testing purposes, should be removed later
+                            player_1_score++;
+                            MessageBox.Show(Convert.ToString(player_1_score)); //This message box is for testing purposes, should be removed later
                             //add a point to player 1's score here
                         }
 						else
 						{
-                            MessageBox.Show("It's still player 2's turn"); //This message box is for testing purposes, should be removed later
+                            player_2_score++;
+                            
+                            MessageBox.Show(Convert.ToString(player_2_score)); //This message box is for testing purposes, should be removed later
                             //add a point to player 2's score here
+                        }
+                        if(player_2_score + player_1_score == 8)
+                        {
+                            await Task.Delay(800);
+                            this.NavigationService.Navigate(new Endscreen(player_1_score.ToString(), player_2_score.ToString()));
                         }
                     }
                     else
