@@ -26,18 +26,18 @@ namespace Memory_project
     {
         public string player_1; //name of player 1
         public string player_2; //name of player 2
-        public int player_1_score;
-        public int player_2_score;
-        object first = null;
-        object second = null;
-        object first_place = null;
-        object second_place = null;
-        List<ImageSource> images;
+        public int player_1_score; //score of player 1
+        public int player_2_score; //score of player 2
+        object first = null; //set tag of first clicked card
+        object second = null; //set tag of second clicked
+        object first_place = null; //place of first card
+        object second_place = null; //place of second card
+        List<ImageSource> images; //list of all the front images
         List<int> imageNumber = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8 }; //makes a list of numbers
         Random random = new Random(); //creates a variable called random
-        bool player1turn = true;
-        public string thepoint = ":";
-        int firstscore = 0;
+        bool player1turn = true; //is it the turn of player one
+        public string thepoint = ":"; 
+        int firstscore = 0; 
         int secondscore = 0;
         int thirdscore = 0;
         int fourthscore = 0;
@@ -49,29 +49,26 @@ namespace Memory_project
         string namefourthscore;
         string namefhithscore;
         string namesixthscore;
-        List<int> scores = new List<int>();
         Dictionary<string, int> namevalue = new Dictionary<string, int>
         {
             
-        };
+        }; // dictonary of all scores
 
 
         public Gamescreen(string player1, string player2)
         {
             InitializeComponent();
-            player_1 = player1;
-            player_2 = player2;
+            player_1 = player1; //set name of player 1
+            player_2 = player2; //set name of player 2
             images = GetImageList(); //Goes to the function GetImageList. In that function the front of the cards will be added
 
-            player01.Content = player_1 + ": " + player_1_score;
-            player02.Content = player_2 + ": " + player_2_score;
-            player01.Foreground = Brushes.Red;
+            player01.Content = player_1 + ": " + player_1_score; //set name off player 1 on screen
+            player02.Content = player_2 + ": " + player_2_score; //set name off player 2 on screen
+            player01.Foreground = Brushes.Red; //make name player 1 red
 
 
-            AddImages(images);
+            AddImages(images); 
             Grid.SetColumn(MyButton, 7);
-            Grid.SetColumn(MyButton_1, 7);
-            Grid.SetRow(MyButton_1, 1);
         }
 
 
@@ -86,7 +83,7 @@ namespace Memory_project
                     Uri path = new Uri("Images/Backside.png", UriKind.Relative); //The uri of the backside card
                     BackgroundImage.Source = new BitmapImage(path); //Display the backside card
                     BackgroundImage.Margin = new Thickness(4); //margin of the backside card
-                    BackgroundImage.Tag = images.First();
+                    BackgroundImage.Tag = images.First(); 
                     images.RemoveAt(0);
                     BackgroundImage.MouseDown += new MouseButtonEventHandler(TurnCard); //when clicked on card it goes to the funtion TurnCard. TurnCard function will show the front
                     Grid.SetColumn(BackgroundImage, c); //Set the columns of the background images
@@ -126,11 +123,11 @@ namespace Memory_project
                 {
                     if (first.ToString() == second.ToString())
                     {
-                        GameGrid.IsHitTestVisible = false;
-                        await Task.Delay(800);
-                        ((Image)first_place).Source = null;
-                        ((Image)second_place).Source = null;
-                        first = null;
+                        GameGrid.IsHitTestVisible = false; //mouseclicks will be canceld
+                        await Task.Delay(800); //delay
+                        ((Image)first_place).Source = null; //turn image 1 back
+                        ((Image)second_place).Source = null; //turn image 2 back
+                        first = null; 
                         second = null;
                         GameGrid.IsHitTestVisible = true;
                         if (player1turn == true) //check which player's turn it is
@@ -148,7 +145,7 @@ namespace Memory_project
                         }
                         if (player_2_score + player_1_score == 8)
                         {
-                            await Task.Delay(800);
+                            await Task.Delay(800); //delay
                             using (StreamReader reader = new StreamReader(@".\SaveGames\savegame.sav"))
                             {
                                 namefirstscore = reader.ReadLine();
@@ -159,7 +156,7 @@ namespace Memory_project
                                 thirdscore = Convert.ToInt32(reader.ReadLine());
                                 namefourthscore = reader.ReadLine();
                                 fourthscore = Convert.ToInt32(reader.ReadLine());
-                                
+                                //read all the pervious scores
                             }
                             namefhithscore = player_1;
                             namesixthscore = player_2;
@@ -203,22 +200,20 @@ namespace Memory_project
                                     writer.WriteLine(author.Value);
                                 }
                             }
-                            this.NavigationService.Navigate(new Endscreen(player_1_score, player_2_score, player_1, player_2));
+                            this.NavigationService.Navigate(new Endscreen(player_1_score, player_2_score, player_1, player_2)); //go to endscreen
                         }
                     }
                     else
                     {
-                        //MessageBox.Show("test");
                         Uri path = new Uri("Images/Backside.png", UriKind.Relative);
-                        //MessageBox.Show("test");
-                        GameGrid.IsHitTestVisible = false;
-                        await Task.Delay(800);
+                        GameGrid.IsHitTestVisible = false; //mouseclicked will be canceld
+                        await Task.Delay(800); //delay
 
-                        ((Image)second_place).Source = new BitmapImage(path);
-                        ((Image)first_place).Source = new BitmapImage(path);
+                        ((Image)second_place).Source = new BitmapImage(path); //turn card to backside
+                        ((Image)first_place).Source = new BitmapImage(path); //turn card to backside
                         first = null;
                         second = null;
-                        GameGrid.IsHitTestVisible = true;
+                        GameGrid.IsHitTestVisible = true; //mouseclicked will be anabled
                         if (player1turn == true) //check which player's turn it is
                         {
                             player1turn = false; //switch turn to player 2
@@ -262,12 +257,6 @@ namespace Memory_project
         public void Back_Start_Game(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new StartGame()); //navigate to the StartGame screen
-        }
-        public void To_End_Screen(object sender, RoutedEventArgs e) //Click function of the button
-        {
-            this.NavigationService.Navigate(new Endscreen(player_1_score, player_2_score, player_1, player_2)); //navigate to endscreen and send the name from the players
-            //TODO: Send score
-            //TODO: auto to endscreen when all cards are matched
         }
     }
 }
